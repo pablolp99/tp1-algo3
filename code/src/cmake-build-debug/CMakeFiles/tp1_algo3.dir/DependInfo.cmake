@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/pablo/pablo/academico/UBA/comp2020/algo-3/tp1/tp1-algo3/main.cpp" "/home/pablo/pablo/academico/UBA/comp2020/algo-3/tp1/tp1-algo3/cmake-build-debug/CMakeFiles/tp1_algo3.dir/main.cpp.o"
+  "/home/pablo/pablo/academico/UBA/comp2020/algo-3/tp1/code/src/main.cpp" "/home/pablo/pablo/academico/UBA/comp2020/algo-3/tp1/code/src/cmake-build-debug/CMakeFiles/tp1_algo3.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -48,10 +48,10 @@ RM = /opt/clion-2019.3/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pablo/pablo/academico/UBA/comp2020/algo-3/tp1/tp1-algo3
+CMAKE_SOURCE_DIR = /home/pablo/pablo/academico/UBA/comp2020/algo-3/tp1/code/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pablo/pablo/academico/UBA/comp2020/algo-3/tp1/tp1-algo3/cmake-build-debug
+CMAKE_BINARY_DIR = /home/pablo/pablo/academico/UBA/comp2020/algo-3/tp1/code/src/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pablo/pablo/academico/UBA/comp2020/algo-3/tp1/tp1-algo3/cmake-build-debug/CMakeFiles /home/pablo/pablo/academico/UBA/comp2020/algo-3/tp1/tp1-algo3/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pablo/pablo/academico/UBA/comp2020/algo-3/tp1/code/src/cmake-build-debug/CMakeFiles /home/pablo/pablo/academico/UBA/comp2020/algo-3/tp1/code/src/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pablo/pablo/academico/UBA/comp2020/algo-3/tp1/tp1-algo3/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pablo/pablo/academico/UBA/comp2020/algo-3/tp1/code/src/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

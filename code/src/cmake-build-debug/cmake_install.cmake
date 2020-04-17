@@ -1,4 +1,4 @@
-# Install script for directory: /home/pablo/pablo/academico/UBA/comp2020/algo-3/tp1/tp1-algo3
+# Install script for directory: /home/pablo/pablo/academico/UBA/comp2020/algo-3/tp1/code/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/pablo/pablo/academico/UBA/comp2020/algo-3/tp1/tp1-algo3/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/pablo/pablo/academico/UBA/comp2020/algo-3/tp1/code/src/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
