@@ -2,6 +2,7 @@
 Trabajo practico 1 de Algoritmos y Estructuras de Datos 3
 
 # File structure
+```
 .
 ├── codigo
 │   ├── CMakeLists.txt
@@ -19,3 +20,4 @@ Trabajo practico 1 de Algoritmos y Estructuras de Datos 3
 ├── requirements.txt
 ├── tp1-ayed3-notebook.ipynb
 └── tp1.pdf
+```
