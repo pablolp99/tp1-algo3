@@ -1,5 +1,5 @@
 #include "algorithms.h"
 
-int suma(int a , int b){
-	return a+b;
+int brute_force(cinta& c, int i, int p, int k){
+    return 0;
 }

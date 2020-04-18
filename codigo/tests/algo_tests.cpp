@@ -1,10 +1,13 @@
 #include "gtest-1.8.1/gtest.h"
 #include "../src/algorithms.h"
+#include <iostream>
 
-TEST(testing_algos, algo1){
-	ASSERT_TRUE(true);
+using namespace std;
+
+TEST(testing_algos, brute_force_1){
+    ASSERT_TRUE(true);
 }
 
-TEST(testing_algos, algo2){
-	ASSERT_EQ(2, 2);
+TEST(testing_algos, brute_force_2){
+    ASSERT_TRUE(true);
 }
