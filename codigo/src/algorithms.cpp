@@ -1,5 +1,5 @@
 #include "algorithms.h"
 
-//int brute_force(cinta& c, int i, int p, int k){
-//    return 0;
-//}
+int brute_force(int **tape, int elems, int resistance, int partial_weight){
+    return 0;
+}

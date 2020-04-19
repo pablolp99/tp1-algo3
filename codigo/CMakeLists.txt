@@ -18,7 +18,7 @@ file(GLOB TEST_SOURCES tests/*.cpp)
 
 #add_executable(main ${SOURCE_FILES})
 add_executable(run_tests ${SOURCE_FILES} ${TEST_SOURCES})
-add_executable(run_code main.cpp)
+add_executable(run_code main.cpp ${SOURCE_FILES})
 
 # Necesitamos asociar los archivos del framework de testing
 target_link_libraries(run_tests gtest gtest_main)

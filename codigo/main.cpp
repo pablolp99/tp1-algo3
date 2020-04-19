@@ -4,23 +4,28 @@
 
 using namespace std;
 
-int test(int **param){
-    return param[0][0];
+void get_tape(int **param, int ec){
+    for(int i = 0; i < ec; ++i){
+        int temp_weight, temp_resistance;
+        cin >> temp_weight >> temp_resistance;
+        param[i] = new int [2];
+        param[i][0] = temp_weight;
+        param[i][1] = temp_resistance;
+    }
 }
 
 int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    int elem_count, max_weight;
-    cin >> elem_count >> max_weight;
-    int tape[elem_count][2];
+    int elem_count, resistance;
+    cin >> elem_count >> resistance;
 
-    for(int i = 0; i < elem_count; ++i){
-        cin >> tape[i][0] >> tape[i][1];
-    }
+    int **tape;
+    tape = new int *[elem_count];
+    get_tape(tape, elem_count);
 
-    cout << test(tape) << endl;
+    brute_force(tape, elem_count, resistance, 0);
 
     return 0;
 }
