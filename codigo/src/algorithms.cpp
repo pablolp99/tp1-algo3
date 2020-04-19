@@ -1,5 +1,9 @@
 #include "algorithms.h"
+#include <vector>
+#include <array>
 
-int brute_force(int **tape, int elems, int resistance, int partial_weight){
+using namespace std;
+
+int brute_force(vector<array<int, 2>>& tape, int elems, int resistance, int partial_weight){
     return 0;
 }

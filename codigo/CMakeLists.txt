@@ -16,7 +16,6 @@ file(GLOB SOURCE_FILES src/*.cpp src/*.h src/*.hpp ./*.cpp ./*.h)
 # Leemos todos los archivos de test en ./tests
 file(GLOB TEST_SOURCES tests/*.cpp)
 
-#add_executable(main ${SOURCE_FILES})
 add_executable(run_tests ${SOURCE_FILES} ${TEST_SOURCES})
 add_executable(run_code main.cpp ${SOURCE_FILES})
 
