@@ -4,18 +4,23 @@
 
 using namespace std;
 
+int test(int **param){
+    return param[0][0];
+}
+
 int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    while(cin.){
-        cin >> a >> b;
+    int elem_count, max_weight;
+    cin >> elem_count >> max_weight;
+    int tape[elem_count][2];
+
+    for(int i = 0; i < elem_count; ++i){
+        cin >> tape[i][0] >> tape[i][1];
     }
-//
-//    while (getline(cin, line)) {
-//        if (line == "") break;
-//        input += " " + line;
-//    }
+
+    cout << test(tape) << endl;
 
     return 0;
 }
