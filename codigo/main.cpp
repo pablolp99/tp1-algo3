@@ -25,7 +25,8 @@ int main(){
     vector<array<int, 2>> tape;
     get_tape(tape, elem_count);
 
-//    brute_force(tape, elem_count, resistance, 0);
-
+    vector<int> res_vect;
+    int result = brute_force(tape, resistance, 0, res_vect);
+    cout << result << endl;
     return 0;
 }
