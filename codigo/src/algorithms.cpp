@@ -8,9 +8,7 @@ int brute_force(vector<array<int, 2>>& tape, int resistance, int cur_elem, vecto
     if(cur_elem == tape.size()-1){
         for(int i = 0; i < res_vect.size(); ++i){
             res_vect[i]-=tape[cur_elem][WGH_INDEX];
-            if(res_vect[i]<0){ // aca hay que ver si no se rompe el vector res_vect
-                return resistance >= 0 ? res_vect.size() : 0;
-            }
+            return (res_vect[i]<0 && resistance >= 0 ? res_vect.size() : 0);
         }
         return resistance - tape[cur_elem][WGH_INDEX] >= 0 ? res_vect.size() + 1 : 0;
     } else {
