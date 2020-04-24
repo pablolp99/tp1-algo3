@@ -25,7 +25,9 @@ int brute_force(vector<array<int, 2>>& tape, int resistance, int cur_elem, vecto
 
 // Backtracking algorithm
 // Same params as BF bc idk backtacking yet
-//int backtracking(int c[], int i, int p, int k);
+int backtracking_factibilidad(vector<array<int, 2>>& tape, int resistance, int cur_elem, vector<int> res_vect);
+
+int backtracking_optimalidad(vector<array<int, 2>>& tape, int resistance, int cur_elem, vector<int> res_vect);
 
 // Dynamic Programming algorithm
 //int dynamic_programming();
