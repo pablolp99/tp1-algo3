@@ -18,12 +18,9 @@ int brute_force(vector<array<int, 2>>& tape, int resistance, int cur_elem, vecto
                 no_add_last = true;
             }
         }
-//        return resistance - tape[cur_elem][WGH_INDEX] >= 0 ? res_vect.size() + 1 : 0;
-        if(was_broken){
-            return 0;
-        }
+//      Hacemos esta molestia de los bools para que se ejecute el ultimo elemento entero y sea mas brute force
 
-        if (resistance < 0){
+        if (resistance < 0 || was_broken){
             return 0;
         } else {
             return no_add_last ? res_vect.size() : res_vect.size()+1;
