@@ -30,4 +30,4 @@ int backtracking_factibilidad(vector<array<int, 2>>& tape, int resistance, int c
 int backtracking_optimalidad(vector<array<int, 2>>& tape, int resistance, int cur_elem, vector<int> res_vect);
 
 // Dynamic Programming algorithm
-//int dynamic_programming();
+int dynamic_programming(vector<array<int, 2>>& tape, int resistance);

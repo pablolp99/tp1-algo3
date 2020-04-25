@@ -96,3 +96,48 @@ int backtracking_optimalidad(vector<array<int, 2>>& tape, int resistance, int cu
         return max(add_elem, dont_add_elem);
     }
 }
+
+int dynamic_programming(vector<array<int, 2>>& tape, int resistance){
+    // Creamos una matriz de NxR donde N es la cantidad de elementos en la cinta
+    int m[tape.size()+1][resistance+1];
+    // Luego llenamos la primer fila y primer columna con la max resistencia de la cinta
+    int max_res=0;
+    for(int me=0;me<tape.size();++me){
+        if(tape[me][RES_INDEX]>=max_res){
+            max_res = tape[me][RES_INDEX]+1;
+        }
+    }
+    for(int i=0; i<=resistance; ++i){
+        m[0][i] = max_res;
+    }
+    for(int j=0; j<=tape.size(); ++j){
+        m[j][0] = max_res;
+    }
+
+    for(int p=1; p<=tape.size(); ++p){
+        for(int r=0; r<=resistance; ++r){
+            if(r>=tape[p-1][WGH_INDEX]){ // Si la bolsa actual resiste al elemento actual
+                if(m[p-1][r-tape[p-1][WGH_INDEX]] >= tape[p-1][WGH_INDEX]){ // Si la minima resistencia anterior resiste al elemento actual
+                    m[p][r] = m[p-1][r-tape[p-1][WGH_INDEX]] <= tape[p-1][RES_INDEX] ? m[p-1][r-tape[p-1][WGH_INDEX]] - tape[p-1][WGH_INDEX] : tape[p-1][RES_INDEX];
+                } else {
+                    m[p][r] = m[p-1][r];
+                }
+            } else {
+                m[p][r] = m[p-1][r];
+            }
+        }
+    }
+
+    int p=tape.size()+1,r=resistance+1,elems=0;
+    while(r > 0 && p > 0){
+        if(m[p][r] == m[p-1][r]){
+            --p;
+        } else {
+            --p;
+            r-=tape[p][WGH_INDEX];
+            ++elems;
+        }
+    }
+
+    return elems;
+}

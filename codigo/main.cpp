@@ -28,9 +28,17 @@ int main(){
     vector<int> res_vect;
     int res = brute_force(tape, resistance, 0, res_vect);
     cout << "BruteForce: " << res << endl;
+    res = 0;
     res = backtracking_factibilidad(tape, resistance, 0, res_vect);
     cout << "BT Fact: " << res << endl;
+    res = 0;
     res = backtracking_optimalidad(tape, resistance, 0, res_vect);
     cout << "BT Optim: " << res << endl;
+    res = 0;
+    res = backtracking_optimalidad(tape, resistance, 0, res_vect);
+    cout << "BT Optim: " << res << endl;
+    res = 0;
+    res = dynamic_programming(tape, resistance);
+    cout << "DP: " << res << endl;
     return 0;
 }
