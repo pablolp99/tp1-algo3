@@ -5,99 +5,57 @@
 using namespace std;
 
 
-int brute_force(vector<array<int, 2>>& tape, int resistance, int cur_elem, vector<int> res_vect){
-    if(cur_elem == tape.size()){
-        bool was_broken = false;
-        for(int i = 0; i < res_vect.size(); ++i){
-            if(res_vect[i]<0){
-                was_broken = true;
-            }
-        }
-//      Hacemos esta molestia de los bools para que se ejecute la ultima iteracion entera y sea mas brute force
-        if (resistance < 0 || was_broken){
+int brute_force(vector<array<int, 2>>& tape, int resistance, int cur_elem, int cant_elem){
+    if(cur_elem == tape.size()) {
+        if (resistance < 0){
             return 0;
-        } else {
-            return res_vect.size();
         }
+        return cant_elem;
     } else {
-        vector<int> res_vect_sin_elem_actual;
-        for(int i = 0; i < res_vect.size(); ++i){
-            res_vect_sin_elem_actual.push_back(res_vect[i]);
-            res_vect[i]-=tape[cur_elem][WGH_INDEX];
-        }
-        res_vect.push_back(tape[cur_elem][RES_INDEX]);
-
-        return max(brute_force(tape, resistance, cur_elem+1, res_vect_sin_elem_actual),
-                brute_force(tape, resistance-tape[cur_elem][WGH_INDEX], cur_elem+1, res_vect));
+        return max(brute_force(tape, min(resistance-tape[cur_elem][WGH_INDEX], tape[cur_elem][RES_INDEX]), cur_elem+1, cant_elem+1),
+                   brute_force(tape, resistance, cur_elem+1, cant_elem));
     }
 }
 
-int backtracking_factibilidad(vector<array<int, 2>>& tape, int resistance, int cur_elem, vector<int> res_vect){
+int backtracking_factibilidad(vector<array<int, 2>>& tape, int resistance, int cur_elem, int cant_elem){
     if(cur_elem == tape.size()){
-        for(int i = 0; i < res_vect.size(); ++i){
-            if(res_vect[i]<0){ // aca hay que ver si no se rompe el vector res_vect
-                return 0;
-            }
-        }
-        return resistance >= 0 ? res_vect.size() : 0;
-    } else {
-        // Si la resistencia sin agregar el elemento se rompe, entonces este camino no es factible
-        if(resistance < 0){
+        if (resistance < 0){
             return 0;
         }
-        vector<int> res_vect_sin_elem_actual;
-        for(int i = 0; i < res_vect.size(); ++i){
-            res_vect_sin_elem_actual.push_back(res_vect[i]);
-            // Si ya rompi la bolsa agregando el elemento anteriormente agregado podo
-            if(res_vect[i] < 0) {
-                return 0;
-            }
-            res_vect[i]-=tape[cur_elem][WGH_INDEX];
+        return cant_elem;
+    } else {
+        // Si la resistencia sin agregar el elemento se rompe, entonces este camino no es factible
+        if (resistance < 0) {
+            return 0;
         }
-        res_vect.push_back(tape[cur_elem][RES_INDEX]);
-
-        return max(backtracking_factibilidad(tape, resistance, cur_elem+1, res_vect_sin_elem_actual),
-                backtracking_factibilidad(tape, resistance-tape[cur_elem][WGH_INDEX], cur_elem+1, res_vect));
+        return max(backtracking_factibilidad(tape, resistance, cur_elem+1, cant_elem),
+                   backtracking_factibilidad(tape, min(resistance-tape[cur_elem][WGH_INDEX], tape[cur_elem][RES_INDEX]), cur_elem+1, cant_elem+1));
     }
 }
 
 int MAX_SOLUTION = 0;
 
-int backtracking_optimalidad(vector<array<int, 2>>& tape, int resistance, int cur_elem, vector<int> res_vect){
-    if(cur_elem == tape.size()-1){
-        for(int i = 0; i < res_vect.size(); ++i){
-            if(res_vect[i]<0){ // aca hay que ver si no se rompe el vector res_vect
-                return 0;
-            }
+int backtracking_optimalidad(vector<array<int, 2>>& tape, int resistance, int cur_elem, int cant_elem){
+    if(cur_elem == tape.size()){
+        if (resistance < 0){
+            return 0;
         }
-        return resistance >= 0 ? res_vect.size() : 0;
+        return cant_elem;
     } else {
         // Si la resistencia sin agregar el elemento se rompe, entonces este camino no es factible
         if(resistance < 0) {
             return 0;
         }
 
-        vector<int> res_vect_sin_elem_actual;
-        for(int i = 0; i < res_vect.size(); ++i){
-            res_vect_sin_elem_actual.push_back(res_vect[i]);
-            // Si ya rompi la bolsa agregando el elemento anteriormente agregado podo
-            if(res_vect[i] < 0) {
-                return 0;
-            }
-            res_vect[i]-=tape[cur_elem][WGH_INDEX];
-        }
-
-        MAX_SOLUTION = MAX_SOLUTION > res_vect.size() ? MAX_SOLUTION : res_vect.size();
+        MAX_SOLUTION = MAX_SOLUTION > cant_elem ? MAX_SOLUTION : cant_elem;
         // Optimalidad
-        if(res_vect.size() + (tape.size()-cur_elem) <= MAX_SOLUTION){
+        if(cant_elem + (tape.size()-cur_elem) <= MAX_SOLUTION){
             // calculo si agregando los elementos hasta el final superaria mi maximo
             // En caso negativo, significa que no encontrare una solucion mejor a la que ya tengo
             return 0;
         }
-        res_vect.push_back(tape[cur_elem][RES_INDEX]);
-
-        return max(backtracking_optimalidad(tape, resistance, cur_elem+1, res_vect_sin_elem_actual),
-                backtracking_optimalidad(tape, resistance-tape[cur_elem][WGH_INDEX], cur_elem+1, res_vect));
+        return max(backtracking_optimalidad(tape, resistance, cur_elem+1, cant_elem),
+                   backtracking_optimalidad(tape, min(resistance-tape[cur_elem][WGH_INDEX], tape[cur_elem][RES_INDEX]), cur_elem+1, cant_elem+1));
     }
 }
 

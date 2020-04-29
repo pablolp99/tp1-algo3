@@ -26,13 +26,13 @@ int main(){
     get_tape(tape, elem_count);
 
     vector<int> res_vect;
-    int res = brute_force(tape, resistance, 0, res_vect);
+    int res = brute_force(tape, resistance, 0, 0);
     cout << "BruteForce: " << res << endl;
     res = 0;
-    res = backtracking_factibilidad(tape, resistance, 0, res_vect);
+    res = backtracking_factibilidad(tape, resistance, 0, 0);
     cout << "BT Fact: " << res << endl;
     res = 0;
-    res = backtracking_optimalidad(tape, resistance, 0, res_vect);
+    res = backtracking_optimalidad(tape, resistance, 0, 0);
     cout << "BT Optim: " << res << endl;
     res = 0;
     res = dynamic_programming(tape, resistance);

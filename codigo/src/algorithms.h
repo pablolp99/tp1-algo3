@@ -21,13 +21,13 @@ using namespace std;
 
     Complejidad O(n x 2^n)
 */
-int brute_force(vector<array<int, 2>>& tape, int resistance, int cur_elem, vector<int> res_vect);
+int brute_force(vector<array<int, 2>>& tape, int resistance, int cur_elem, int cant_elem);
 
 // Backtracking algorithm
 // Same params as BF bc idk backtacking yet
-int backtracking_factibilidad(vector<array<int, 2>>& tape, int resistance, int cur_elem, vector<int> res_vect);
+int backtracking_factibilidad(vector<array<int, 2>>& tape, int resistance, int cur_elem, int cant_elem);
 
-int backtracking_optimalidad(vector<array<int, 2>>& tape, int resistance, int cur_elem, vector<int> res_vect);
+int backtracking_optimalidad(vector<array<int, 2>>& tape, int resistance, int cur_elem, int cant_elem);
 
 // Dynamic Programming algorithm
 int dynamic_programming(vector<array<int, 2>>& tape, int resistance);
