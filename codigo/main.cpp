@@ -35,9 +35,6 @@ int main(){
     res = backtracking_optimalidad(tape, resistance, 0, res_vect);
     cout << "BT Optim: " << res << endl;
     res = 0;
-    res = backtracking_optimalidad(tape, resistance, 0, res_vect);
-    cout << "BT Optim: " << res << endl;
-    res = 0;
     res = dynamic_programming(tape, resistance);
     cout << "DP: " << res << endl;
     return 0;
