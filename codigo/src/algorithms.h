@@ -1,5 +1,6 @@
 #include <vector>
 #include <array>
+#include <string.h>
 
 #define WGH_INDEX 0
 #define RES_INDEX 1
@@ -30,4 +31,6 @@ int backtracking_factibilidad(vector<array<int, 2>>& tape, int resistance, int c
 int backtracking_optimalidad(vector<array<int, 2>>& tape, int resistance, int cur_elem, int cant_elem);
 
 // Dynamic Programming algorithm
+int dynamic_programming_noFuncional(vector<array<int, 2>>& tape, int resistance);
+
 int dynamic_programming(vector<array<int, 2>>& tape, int resistance);

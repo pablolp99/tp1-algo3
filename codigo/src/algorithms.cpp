@@ -59,7 +59,7 @@ int backtracking_optimalidad(vector<array<int, 2>>& tape, int resistance, int cu
     }
 }
 
-int dynamic_programming(vector<array<int, 2>>& tape, int resistance){
+int dynamic_programming_noFuncional(vector<array<int, 2>>& tape, int resistance){
     // Creamos una matriz de NxR donde N es la cantidad de elementos en la cinta
     int m[tape.size()+1][resistance+1];
     // Luego llenamos la primer fila y primer columna con la max resistencia de la cinta
@@ -102,4 +102,39 @@ int dynamic_programming(vector<array<int, 2>>& tape, int resistance){
     }
 
     return elems;
+}
+
+int dynamic_programming(vector<array<int, 2>>& tape, int resistance) {
+    pair<int,int> m[tape.size()+1][resistance+1];
+    pair<int,int> aux;
+    /*for(int i = 0; i < resistance+1; i++) {
+        m[0][i] = {0, 0};
+    }
+    for(int i = 0; i < tape.size()+1; i++) {
+        m[i][0] = {0, 0};
+    }*/
+    for(int elem = 1; elem < tape.size()+1; elem++) {
+        for(int res = 1; res < resistance+1; res++) {
+            if(tape[elem-1][WGH_INDEX] > res) {
+                m[elem][res] = m[elem-1][res];
+            } else {
+                if (m[elem - 1][res - tape[elem-1][WGH_INDEX]].first == 0) {
+                    m[elem][res] = {1, tape[elem-1][RES_INDEX]};
+                } else {
+                    aux = m[elem - 1][res - tape[elem-1][WGH_INDEX]];
+                    if(aux.second >= tape[elem-1][WGH_INDEX]){
+                        m[elem][res] = {aux.first + 1, min(aux.second - tape[elem-1][WGH_INDEX], tape[elem-1][RES_INDEX])};
+                    } else {
+                        m[elem][res] = m[elem-1][res];
+                    }
+                }
+            }
+        }
+    }
+
+    int max_cant = 0;
+    for(int elem = 0; elem < tape.size()+1; elem++){
+        max_cant = max(max_cant, m[elem][resistance].first);
+    }
+    return max_cant;
 }

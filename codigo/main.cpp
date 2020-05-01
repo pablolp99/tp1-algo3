@@ -3,6 +3,7 @@
 #include "src/algorithms.h"
 #include <vector>
 #include <array>
+#include <string.h>
 
 using namespace std;
 
@@ -35,7 +36,7 @@ int main(){
     res = backtracking_optimalidad(tape, resistance, 0, 0);
     cout << "BT Optim: " << res << endl;
     res = 0;
-    res = dynamic_programming(tape, resistance);
+    res = dynamic_programming(tape, resistance);;
     cout << "DP: " << res << endl;
     return 0;
 }
