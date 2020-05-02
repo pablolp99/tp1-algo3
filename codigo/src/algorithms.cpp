@@ -42,6 +42,9 @@ int backtracking_optimalidad(vector<array<int, 2>>& tape, int resistance, int cu
         }
         return cant_elem;
     } else {
+        if (cur_elem == 0){
+            MAX_SOLUTION = 0;
+        }
         // Si la resistencia sin agregar el elemento se rompe, entonces este camino no es factible
         if(resistance < 0) {
             return 0;

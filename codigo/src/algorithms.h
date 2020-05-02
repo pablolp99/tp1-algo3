@@ -22,6 +22,9 @@ using namespace std;
 
     Complejidad O(n x 2^n)
 */
+
+
+
 int brute_force(vector<array<int, 2>>& tape, int resistance, int cur_elem, int cant_elem);
 
 // Backtracking algorithm
