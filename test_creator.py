@@ -10,13 +10,13 @@ def crear_test(n):
 
 
 if __name__ == "__main__":
-    ns_altos = [15,17,19,21,25]
-    ns_bajos = [5,6,7,8,9,10]
+    ns = list(range(1,31,1))
     resistencias = [1, 10, 20, 50, 75, 100]
 
     with open('tests_tp1.txt', 'a') as file:
+        file.write("{}\n".format(len(ns)*len(resistencias)))
         for r in resistencias:
-            for n in ns_bajos+ns_altos:
+            for n in ns:
                 file.write("{} {}\n".format(n, r))
                 for p in crear_test(n):
                     file.write("{} {}\n".format(p[0], p[1]))
