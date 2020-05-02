@@ -4,10 +4,14 @@
 
 using namespace std;
 
-TEST(testing_algos, brute_force_1){
+TEST(testing_algos, brute_force){
     ASSERT_TRUE(true);
 }
 
-TEST(testing_algos, brute_force_2){
+TEST(testing_algos, backtracking_fact){
+    ASSERT_TRUE(true);
+}
+
+TEST(testing_algos, backtracking_opt){
     ASSERT_TRUE(true);
 }
