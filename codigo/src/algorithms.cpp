@@ -62,82 +62,16 @@ int backtracking_optimalidad(vector<array<int, 2>>& tape, int resistance, int cu
     }
 }
 
-int dynamic_programming_noFuncional(vector<array<int, 2>>& tape, int resistance){
-    // Creamos una matriz de NxR donde N es la cantidad de elementos en la cinta
-    int m[tape.size()+1][resistance+1];
-    // Luego llenamos la primer fila y primer columna con la max resistencia de la cinta
-    int max_res=0;
-    for(int me=0;me<tape.size();++me){
-        if(tape[me][RES_INDEX]>=max_res){
-            max_res = tape[me][RES_INDEX]+1;
-        }
-    }
-    for(int i=0; i<=resistance; ++i){
-        m[0][i] = max_res;
-    }
-    for(int j=0; j<=tape.size(); ++j){
-        m[j][0] = max_res;
-    }
-
-    for(int p=1; p<=tape.size(); ++p){
-        for(int r=0; r<=resistance; ++r){
-            if(r>=tape[p-1][WGH_INDEX]){ // Si la bolsa actual resiste al elemento actual
-                if(m[p-1][r-tape[p-1][WGH_INDEX]] >= tape[p-1][WGH_INDEX]){ // Si la minima resistencia anterior resiste al elemento actual
-                    m[p][r] = m[p-1][r-tape[p-1][WGH_INDEX]] <= tape[p-1][RES_INDEX] ? m[p-1][r-tape[p-1][WGH_INDEX]] - tape[p-1][WGH_INDEX] : tape[p-1][RES_INDEX];
-                } else {
-                    m[p][r] = m[p-1][r];
-                }
-            } else {
-                m[p][r] = m[p-1][r];
-            }
-        }
-    }
-
-    int p=tape.size()+1,r=resistance+1,elems=0;
-    while(r > 0 && p > 0){
-        if(m[p][r] == m[p-1][r]){
-            --p;
-        } else {
-            --p;
-            r-=tape[p][WGH_INDEX];
-            ++elems;
-        }
-    }
-
-    return elems;
+int dynamic_programming_td(vector<array<int, 2>>& tape, int resistance) {
+    vector<vector<int>> m(tape.size() + 1, vector<int>(resistance + 1, -1));
+    return _dynamic_programming_td(tape, m, resistance, 1, 999999999);
 }
 
-int dynamic_programming(vector<array<int, 2>>& tape, int resistance) {
-    pair<int,int> m[tape.size()+1][resistance+1];
-    pair<int,int> aux;
-    /*for(int i = 0; i < resistance+1; i++) {
-        m[0][i] = {0, 0};
-    }
-    for(int i = 0; i < tape.size()+1; i++) {
-        m[i][0] = {0, 0};
-    }*/
-    for(int elem = 1; elem < tape.size()+1; elem++) {
-        for(int res = 1; res < resistance+1; res++) {
-            if(tape[elem-1][WGH_INDEX] > res) {
-                m[elem][res] = m[elem-1][res];
-            } else {
-                if (m[elem - 1][res - tape[elem-1][WGH_INDEX]].first == 0) {
-                    m[elem][res] = {1, tape[elem-1][RES_INDEX]};
-                } else {
-                    aux = m[elem - 1][res - tape[elem-1][WGH_INDEX]];
-                    if(aux.second >= tape[elem-1][WGH_INDEX]){
-                        m[elem][res] = {aux.first + 1, min(aux.second - tape[elem-1][WGH_INDEX], tape[elem-1][RES_INDEX])};
-                    } else {
-                        m[elem][res] = m[elem-1][res];
-                    }
-                }
-            }
-        }
-    }
-
-    int max_cant = 0;
-    for(int elem = 0; elem < tape.size()+1; elem++){
-        max_cant = max(max_cant, m[elem][resistance].first);
-    }
-    return max_cant;
+int _dynamic_programming_td(vector<array<int, 2>>& tape, vector<vector<int>>& m , int R, int cur_elem, int min_res){
+    if(R<0) return MENOS_INFINITO;
+    if(min_res<0) return MENOS_INFINITO;
+    if(cur_elem==tape.size()+1) return 0;
+    if(m[cur_elem][R]==-1) m[cur_elem][R] = max(_dynamic_programming_td(tape, m, R, cur_elem+1, min_res),
+                                               1+_dynamic_programming_td(tape, m, R-tape[cur_elem-1][WGH_INDEX], cur_elem+1, min(min_res-tape[cur_elem-1][WGH_INDEX], tape[cur_elem-1][RES_INDEX])));
+    return m[cur_elem][R];
 }
