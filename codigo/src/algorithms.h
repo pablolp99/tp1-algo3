@@ -39,5 +39,4 @@ int dynamic_programming_noFuncional(vector<array<int, 2>>& tape, int resistance)
 
 int dynamic_programming(vector<array<int, 2>>& tape, int resistance);
 int dynamic_programming_td(vector<array<int, 2>>& tape, int resistance);
-int _dynamic_programming_td(vector<array<int, 2>>& tape, vector<vector<int>>& m, int R, int cur_elem, int min_res);
-int _dynamic_programming_td_bis(vector<array<int, 2>>& tape, vector<vector<int>>& m, int R, int cur_elem);
+int _dynamic_programming_td(vector<array<int, 2>>& tape, vector<vector<int>>& m, int R, int cur_elem);

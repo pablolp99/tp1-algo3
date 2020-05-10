@@ -1,5 +1,5 @@
 import random
-random.seed(2020)
+random.seed(2019)
 
 def crear_test(n):
     pares = list()
