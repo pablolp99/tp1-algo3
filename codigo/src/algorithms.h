@@ -14,29 +14,10 @@ using namespace std;
       [weight , resistance]_i >
 */
 
-/* Brute Force algorithm
-    Parametros:
-        cinta         => La cinta
-        resistencia   => Resistencia de la Bolsa
-        cur_elem      => i-esimo elemento a ver
-        res_vect      => Vector de resistencias resultante por elemento
-
-    Complejidad O(n x 2^n)
-*/
-
-
-
-int brute_force(vector<array<int, 2>>& tape, int resistance, int cur_elem, int cant_elem);
-
+int FB(vector<array<int, 2>>& tape, int resistance, int cur_elem, int cant_elem);
 // Backtracking algorithm
 // Same params as BF bc idk backtacking yet
-int backtracking_factibilidad(vector<array<int, 2>>& tape, int resistance, int cur_elem, int cant_elem);
-
-int backtracking_optimalidad(vector<array<int, 2>>& tape, int resistance, int cur_elem, int cant_elem);
-
-// Dynamic Programming algorithm
-int dynamic_programming_noFuncional(vector<array<int, 2>>& tape, int resistance);
-
-int dynamic_programming(vector<array<int, 2>>& tape, int resistance);
-int dynamic_programming_td(vector<array<int, 2>>& tape, int resistance);
-int _dynamic_programming_td(vector<array<int, 2>>& tape, vector<vector<int>>& m, int R, int cur_elem);
+int BTF(vector<array<int, 2>>& tape, int resistance, int cur_elem, int cant_elem);
+int BTO(vector<array<int, 2>>& tape, int resistance, int cur_elem, int cant_elem);
+int PD(vector<array<int, 2>>& tape, int resistance);
+int _PD(vector<array<int, 2>>& tape, vector<vector<int>>& m, int R, int cur_elem);
