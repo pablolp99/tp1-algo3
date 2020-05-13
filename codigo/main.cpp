@@ -30,9 +30,9 @@ int main(){
 
         auto t1 = chrono::high_resolution_clock::now();
 //        int r = FB(tape, resistance, 0, 0);
-//        int r = BTF(tape, resistance, 0, 0);
+        int r = BTF(tape, resistance, 0, 0);
 //        int r = BTO_FLIPPED(tape, resistance, 0, 0);
-        int r = BTO(tape, resistance, 0, 0);
+//        int r = BTO(tape, resistance, 0, 0);
 //        int r = PD(tape, resistance);
         auto t2 = chrono::high_resolution_clock::now();
         auto duration = chrono::duration_cast<std::chrono::nanoseconds>( t2 - t1 ).count();
