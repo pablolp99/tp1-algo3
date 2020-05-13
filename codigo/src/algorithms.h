@@ -19,5 +19,6 @@ int FB(vector<array<int, 2>>& tape, int resistance, int cur_elem, int cant_elem)
 // Same params as BF bc idk backtacking yet
 int BTF(vector<array<int, 2>>& tape, int resistance, int cur_elem, int cant_elem);
 int BTO(vector<array<int, 2>>& tape, int resistance, int cur_elem, int cant_elem);
+int BTO_FLIPPED(vector<array<int, 2>>& tape, int resistance, int cur_elem, int cant_elem);
 int PD(vector<array<int, 2>>& tape, int resistance);
 int _PD(vector<array<int, 2>>& tape, vector<vector<int>>& m, int R, int cur_elem);
